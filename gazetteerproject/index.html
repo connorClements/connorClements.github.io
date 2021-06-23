@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gazetteer App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+    <link rel="stylesheet" href="libs/css/leaflet.extra-markers.min.css">
+    <link rel="stylesheet" href="libs/css/all.min.css">
+    <link rel="stylesheet" href="libs/css/MarkerCluster.css">
+    <link rel="stylesheet" href="libs/css/MarkerCluster.Default.css">
+    <link rel="stylesheet" type="text/css" href="libs/css/styles.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <nav class="navbar" id="navBar">
+            <h1 id="navHeader">Gazetteer</h1>
+            <div id="selectDropdown">
+                <select class="form-control" id ="countryCode"></select>
+            </div>  
+        </nav>
+    </header>
+
+    <div id="preloader"></div> 
+    <div id="mapContainer">   
+        <div id="mapDiv"></div>
+    </div>
+    
+
+
+<!-- Modal current location information -->
+<div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="locationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modalWeather" role="document">
+        <div class="modal-content">
+            <div class="closeBtn">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            <div class="modal-body" id="weatherBody">
+                <h5 id="currentLoc"></h5> 
+                <div id="weatherIcon" class="weatherResult"></div>
+                <div id= "currentWeather" class="weatherResult"></div>
+                <div id= "currentTemp" class="weatherResult"></div>
+                <div id= "temp" class="weatherResult"></div>
+                <div id= "feelsLikeTemp" class="weatherResult"></div>
+                <div id= "windSpeed" class="weatherResult"></div>
+                <div id= "humidity" class="weatherResult"></div>
+                <div id= "pressure" class="weatherResult"></div>                   
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="noWeatherModal" tabindex="-1" role="dialog" aria-labelledby="noWeatherLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Current weather information for this location is unavailable.</h5>   
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for Countries info -->
+<div class="modal fade" id="countryModal" tabindex="-1" role="dialog" aria-labelledby="countryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="closeBtn">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-header">
+                <h5 class="modal-title txtCountry"></h5>
+                <div class="flagClass"></div>    
+            </div>
+            <div class="modal-header modal-title">General Information</div>
+            <div class="modal-body">
+                <table id="countryTable">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="countryCategory">Capital</td>
+                            <td id="txtCapital" class="tableCountryResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="countryCategory">Continent</td>
+                            <td id="txtContinent" class="tableCountryResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="countryCategory">Population</td>
+                            <td id="txtPopulation" class="tableCountryResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="countryCategory">Currency Name</td>
+                            <td id="txtCurrencyName" class="tableCountryResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="countryCategory">Currency Code</td>
+                            <td id="txtCurrencyCode" class="tableCountryResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="countryCategory">Currency Symbol</td>
+                            <td id="txtCurrencySymbol" class="tableCountryResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="countryCategory">Area</td>
+                            <td id="txtArea" class="tableCountryResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="countryCategory">Alternative Country Names</td>
+                            <td id="txtAltNames" class="tableCountryResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="countryCategory">Timezone(s)</td>
+                            <td id="txtTimezone" class="tableCountryResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="countryCategory">Demonym</td>
+                            <td id="txtDemonym" class="tableCountryResult"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Modal for COVID data-->
+<div class="modal fade" id="covidModal" tabindex="-1" role="dialog" aria-labelledby="countryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="closeBtn">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-header modal-title">
+                <h5 class="modal-title txtCountry"></h5>
+                <div class="flagClass"></div>
+            </div>
+            <div class="modal-header modal-title">COVID data</div>
+            <div class="modal-body">
+                <table id="covidTable">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="covidCategory">Confirmed Cases</td>
+                            <td id="txtConfirmed" class="tableCovidResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="covidCategory">Recovered</td>
+                            <td id="txtRecovered" class="tableCovidResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="covidCategory">Total Deaths</td>
+                            <td id="txtDeaths" class="tableCovidResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="covidCategory">Death Rate</td>
+                            <td id="txtDeathRate" class="tableCovidResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="covidCategory">Cases per million population</td>
+                            <td id="txtCasesPerMillion" class="tableCovidResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="covidCategory">Deaths(today)</td>
+                            <td id="txtDeathsToday" class="tableCovidResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="covidCategory">Confirmed Cases(today)</td>
+                            <td id="txtConfirmedToday" class="tableCovidResult"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal for travel data-->
+<div class="modal fade" id="travelModal" tabindex="-1" role="dialog" aria-labelledby="countryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="closeBtn">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-header modal-title">
+                <h5 class="modal-title txtCountry"></h5>
+                <div class="flagClass"></div>
+            </div>
+            <div class="modal-header modal-title">Travel Information</div>
+            <div class="modal-body">
+                <table id="travelTable">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="travelCategory">Official Language(s)</td>
+                            <td id="txtLanguages" class="tableTravelResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="travelCategory">Calling Code</td>
+                            <td id="txtCallingCode" class="tableTravelResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="travelCategory">Emergency Numbers</td>
+                            <td id="txtEmergency" class="tableTravelResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="travelCategory">Electricity Plugs</td>
+                            <td id="txtPlugs" class="tableTravelResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="travelCategory">Can I drink the water?</td>
+                            <td id="txtWater" class="tableTravelResult"></td>
+                        </tr>
+                        <tr>
+                            <td class="travelCategory">Vaccinations Recommended</td>
+                            <td id="txtVaccinations" class="tableTravelResult"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal for news data-->
+<div class="modal fade" id="newsModal" tabindex="-1" role="dialog" aria-labelledby="countryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="closeBtn">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-header modal-title">
+                <h5 class="modal-title txtCountry"></h5>
+                <div class="flagClass"></div>
+            </div>
+                <div class="modal-header" id="newsTitle"><h5 class="modal-title">Breaking News</h5></div><div id="noNews"></div>
+                <ul class="newsFeed">
+                    <li id="newsOne" class="newsStory"></li>
+                    <li id="newsTwo" class="newsStory"></li>
+                    <li id="newsThree" class="newsStory"></li>
+                    <li id="newsFour" class="newsStory"></li>
+                    <li id="newsFive" class="newsStory"></li>
+                </ul>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal for holiday data-->
+<div class="modal fade" id="holidayModal" tabindex="-1" role="dialog" aria-labelledby="countryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="closeBtn">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-header modal-title">
+                <h5 class="modal-title txtCountry"></h5>
+                <div class="flagClass"></div>
+            </div>
+            <div class="modal-header" id="holidayTitle"><h5 class="modal-title">Local Holidays</h5></div>
+            <div class="modal-body">
+                <table id="holidayTable">
+                    <thead>
+                    </thead>
+                    <tbody class="holidays">
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="noCountryModal" tabindex="-1" role="dialog" aria-labelledby="noCountryLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Information for the selected country is unavailable.</h5> 
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="welcomeLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="closeBtn">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="welcomeMessage">
+                <h5>Welcome to Gazetteer!</h5>
+                <p>Click anywhere on the map for current weather information</p> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+    <script src="libs/js/leaflet.extra-markers.min.js"></script>
+    <script type="application/javascript" src="libs/js/all.min.js"></script>
+    <script type="application/javascript" src="libs/js/leaflet.markercluster.js"></script>
+    <script type="application/javascript" src="libs/js/script.js"></script>
+    
+</body>
+</html>

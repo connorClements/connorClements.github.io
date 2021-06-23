@@ -1,0 +1,101 @@
+<!doctype html>
+
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+
+		<title>AJAX/PHP/CURL/JSON task</title>
+
+		<meta name="description" content="AJAX/PHP/CURL/JSON task">
+		<meta name="author" content="Connor Clements">
+
+		<link rel="stylesheet" type="text/css" href="libs/css/styles.css">
+
+	</head>
+
+	<body>
+
+        	<label id="latLabel" for="lat">Enter latitude:</label><input type="number" id="lat" name="lat">
+        	<br>
+        	<label id="lngLabel" for="lng">Enter longitude:</label><input type="number" id="lng" name="lng">
+			<br>
+        
+			<br><br>
+
+			<button id="cCodeRun">Where am I?</button>
+			<button id="sunriseRun">When is sunrise?</button>
+			<button id="oceanRun">Which ocean is nearest me?</button>
+		
+
+			<div id="divResults" >
+			
+				<table>
+
+					<tr>
+						<td align="right">
+							Country: 
+						</td>
+						<td id="txtCountry">
+						
+						</td>
+
+					</tr>
+
+					<tr>
+						<td align="right">
+							Country Code: 
+						</td>
+						<td id="txtCode">
+						
+						</td>
+
+					</tr>
+
+					<tr>
+						<td align="right">
+							District: 
+						</td>
+						<td id="txtToponym">
+						
+						</td>
+
+					</tr>
+
+					<tr>
+						<td align="right">
+							Sunrise: 
+						</td>
+						<td id="txtSunrise"> 
+						
+						</td>
+
+					</tr>
+
+					<tr>
+						<td align="right">
+							Ocean: 
+						</td>
+						<td id="txtOcean"> 
+						
+						</td>
+
+					</tr>
+
+				</table>
+		
+			</div>
+
+		<div id="preloader"></div>
+
+		<script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
+		<script type="application/javascript" src="libs/js/script.js"></script>
+		<script type="application/javascript" src="libs/js/scriptOcean.js"></script>
+		<script type="application/javascript" src="libs/js/scriptSunrise.js"></script>
+
+	
+
+	</body>
+
+</html>

@@ -1,0 +1,195 @@
+@media (min-width: 576px) {
+  .modal-dialog-centered {
+    min-height: calc(100% - (1.75rem * 2));
+  }
+}
+
+body {
+  margin-bottom: 0;
+  height: calc(100% - 70px); /* minus navbar incl. border */
+  position: relative;
+  overflow: hidden;
+}
+
+html,
+#mapContainer {
+  height: 100%;
+}
+
+header.navbar {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#mapDiv {
+  height: 100%;
+}
+
+.navbar,
+.modalClose {
+  background-color: rgb(39, 155, 155);
+}
+
+.modalClose {
+  border: 0px;
+}
+
+#navHeader {
+  color: white;
+}
+
+header {
+  margin-bottom: 0;
+}
+
+.tableCountryResult,
+.tableWeatherResult,
+.holidayDate,
+.tableCovidResult,
+.tableTravelResult {
+  float: right;
+  text-align: right;
+}
+
+.modal-body,
+a {
+  font-size: 12px;
+}
+
+#countryTable,
+#locationTable,
+#holidayTable,
+#covidTable,
+#travelTable {
+  width: 100%;
+}
+
+tr {
+  border-bottom: 1px solid black;
+}
+
+.countryCategory,
+.holidayName,
+.covidCategory,
+.travelCategory {
+  font-style: italic;
+}
+
+#findCountry {
+  background-color: black;
+  padding: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: 1px solid black;
+}
+
+#findCountry:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.modal-content {
+  width: 100%;
+}
+
+.close {
+  align: right;
+  margin-right: 15px;
+  margin-top: 5px;
+}
+
+.modal-dialog-centered {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: calc(100% - (0.5rem * 2));
+}
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #000;
+  opacity: 0.5;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #f2f2f2;
+  border-top: 6px solid #56829e;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.txtCountry {
+  padding-top: 22px;
+  padding-bottom: 0px;
+}
+
+.newsFeed {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 18px;
+  margin-right: 10px;
+}
+
+#weatherBody {
+  text-align: center;
+  align: center;
+}
+
+.weatherResult {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#currentTemp {
+  font-size: 250%;
+}
+
+.modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.welcomeMessage {
+  text-align: center;
+}
