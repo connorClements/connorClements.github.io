@@ -27,7 +27,7 @@
 
 	};
 
-    $query = 'UPDATE personnel SET firstName = "' . $_POST['firstName'] . '", lastName = "' . $_POST['lastName'] . '", jobTitle = "' . $_POST['jobTitle'] . '", email = "' . $_POST['email'] . '", departmentID = ' . $_POST['departmentID'] . ' WHERE id =  "'. $_REQUEST['id'].'"';
+    $query = 'UPDATE personnel SET firstName = "' . $_POST['firstName'] . '", lastName = "' . $_POST['lastName'] . '", jobTitle = "' . $_POST['jobTitle'] . '", email = "' . $_POST['email'] . '", departmentID = ' . $_POST['departmentID'] . ' WHERE id =  "'. $_POST['id'].'"';
 
 	$result = $conn->query($query);
 	

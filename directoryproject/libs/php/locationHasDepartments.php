@@ -32,7 +32,7 @@
 
 	}	
 
-	$query = 'SELECT locationID FROM department WHERE locationID ='. $_REQUEST['locationID'];
+	$query = 'SELECT locationID FROM department WHERE locationID ='. $_POST['locationID'];
 
 	$result = $conn->query($query);
 	
