@@ -1,9 +1,18 @@
-.directoryHeading {
-  font-weight: bold;
+@media (max-width: 480px) {
+  #searchBar {
+    width: 80%;
+    margin-bottom: 15px;
+    margin-left: 5px;
+  }
+
+  header {
+    margin-left: 2px;
+    margin-top: 5px;
+  }
 }
 
-#searchBar {
-  width: 50% !important;
+.directoryHeading {
+  font-weight: bold;
 }
 
 .display-3 {
@@ -38,4 +47,16 @@
 
 tr {
   border-bottom: 1px solid lightgray;
+}
+
+body {
+  width: 100%;
+}
+
+header {
+  width: 100%;
+}
+
+header {
+  padding-left: 15px;
 }
