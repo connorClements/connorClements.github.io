@@ -122,7 +122,7 @@ $('#editEmployeeForm').submit(function() {
 
             if (result.status.name == "ok") {
 
-                document.location.reload();
+                document.location.reload(true);
 
             };
 
@@ -313,7 +313,7 @@ $('#newEmployeeForm').submit(function() {
 
                 
 
-                document.location.reload();
+                document.location.reload(true);
 
             }
 
@@ -346,7 +346,7 @@ $('#newDepartmentForm').submit(function() {
 
                 console.log(result);
                 
-                document.location.reload();
+                document.location.reload(true);
             }
 
         },
@@ -375,7 +375,7 @@ $('#newLocationForm').submit(function() {
 
                 console.log(result);
                 
-                document.location.reload();
+                document.location.reload(true);
             }
 
         },
@@ -443,7 +443,7 @@ $('#deleteDepartmentButton').on('click', function() {
 
                 console.log('department deleted');
 
-                document.location.reload();
+                document.location.reload(true);
                 
             }
 
@@ -514,7 +514,7 @@ $('#deleteLocationButton').on('click', function() {
 
                 console.log('Location deleted');
 
-                document.location.reload();
+                document.location.reload(true);
                 
             }
 
@@ -547,7 +547,7 @@ $('#deleteEmployee').on('click', function() {
 
                 console.log(result);
 
-                document.location.reload();
+                document.location.reload(true);
 
             }
 
