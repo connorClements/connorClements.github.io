@@ -16,7 +16,8 @@ function getEmployees() {
             if (result.status.name == "ok") {
 
                 
-                
+                document.location.reload(true);
+
                 for (i=0; i < result['data'].length; i++) {
 
                     $('#employees').append('<tr><td id="' + i + '-employeeName">' + result['data'][i]['firstName'] + ' ' + result['data'][i]['lastName'] + '</td><td id="' + i + '-employeeEmail">' +  result['data'][i]['email'] + '</td><td id="' + i + '-employeeJobTitle">' + result['data'][i]['jobTitle'] +  '</td><td id="' + i + '-employeeDepartment">' + result['data'][i]['department'] + '</td><td id="' + i + '-employeeLocation">' + result['data'][i]['location'] + '</td><td><button type="button" class="btn btn-primary" id="' + i + '-employee" data-toggle="modal" onclick=populateEmployee(' + i + ') data-target="#viewEmployee"><i class="fas fa-info"></i></button></td><td style="display: none;" id="' + i + '-id">' +  result['data'][i]['id'] + '</td></tr>');
