@@ -138,7 +138,7 @@ $('#editEmployeeForm').submit(function() {
 });
 
 
-function searchEmployee() {
+$('#searchBar').keyup(function() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("searchBar");
@@ -158,7 +158,7 @@ function searchEmployee() {
         }
         }
     }
-};
+});
 
 function getDepartments() {
 

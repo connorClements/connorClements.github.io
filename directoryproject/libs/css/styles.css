@@ -1,62 +1,175 @@
-@media (max-width: 480px) {
-  #searchBar {
-    width: 80%;
-    margin-bottom: 15px;
+@media only screen and (max-width: 568px) {
+  .employeeView {
+    float: right;
+    text-align: right;
+    align: right;
+  }
+
+  #viewEmployee {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .employeeTable {
+    width: 100%;
+    position: absolute;
+  }
+
+  #viewTable {
+    width: 100%;
+  }
+
+  #employeeTable,
+  thead,
+  tbody,
+  th,
+  #employees td,
+  #employees tr {
+    display: block;
+  }
+
+  #employees tr {
+    margin: 0 0 1rem 0;
+  }
+
+  .directoryHeading {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  #employees tr {
+    border: 1px solid #ccc;
+    width: 100%;
+  }
+
+  #employees td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+  }
+
+  #employees td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  #employees td:nth-of-type(1):before {
+    content: "Name";
+    text-align: left;
+    font-weight: bold;
+  }
+  #employees td:nth-of-type(2):before {
+    content: "Email";
+    text-align: left;
+    font-weight: bold;
+  }
+  #employees td:nth-of-type(3):before {
+    content: "Job Title";
+    text-align: left;
+    font-weight: bold;
+  }
+  #employees td:nth-of-type(4):before {
+    content: "Department";
+    text-align: left;
+    font-weight: bold;
+  }
+  #employees td:nth-of-type(5):before {
+    content: "Location";
+    text-align: left;
+    font-weight: bold;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  #employees td {
+    text-align: right;
+  }
+
+  #viewTable {
+    width: 100%;
+  }
+
+  #header {
+    font-size: 30px;
+    margin-left: 15px;
+  }
+
+  .nav-item {
+    display: inline-block;
+    margin-top: 5px;
+  }
+
+  tr {
+    border-bottom: 1px solid lightgray;
+  }
+}
+
+@media only screen and (min-width: 568px) {
+  .navbar {
+    display: block;
+  }
+  .shrinkToFit {
+    margin-top: 5px;
+  }
+
+  #employees td {
+    text-align: left;
+  }
+
+  #header {
+    margin-left: 15px;
+    font-size: 30px;
+  }
+
+  .directoryHeading {
+    font-weight: bold;
+  }
+
+  .display-3 {
+    padding-left: 12px;
+  }
+
+  .btn-success {
     margin-left: 5px;
   }
 
-  header {
-    margin-left: 2px;
-    margin-top: 5px;
+  .btn-primary {
+    margin-right: 5px;
   }
-}
 
-.directoryHeading {
-  font-weight: bold;
-}
+  .btn-danger {
+    margin-left: 5px;
+  }
 
-.display-3 {
-  padding-left: 12px;
-}
+  #viewTable {
+    width: 100%;
+  }
 
-.btn-success {
-  margin-left: 5px;
-}
+  tr {
+    border-bottom: 1px solid lightgray;
+  }
 
-.btn-primary {
-  margin-right: 5px;
-}
+  .nav-item {
+    float: left;
+  }
 
-.btn-danger {
-  margin-left: 5px;
-}
-
-.employeeView {
-  float: right;
-  text-align: right;
-  align: right;
-}
-
-#viewTable {
-  width: 100%;
+  .employeeView {
+    float: right;
+    text-align: right;
+    align: right;
+  }
 }
 
 .icon {
   color: blue;
-}
-
-tr {
-  border-bottom: 1px solid lightgray;
-}
-
-body {
-  width: 100%;
-}
-
-header {
-  width: 100%;
-}
-
-header {
-  padding-left: 15px;
 }
