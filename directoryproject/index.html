@@ -16,6 +16,8 @@
 </head>
 
 <body>
+
+    <div id="preloader"></div> 
     <!--Company Directory Header-->
     
         <div id="header">Company Directory</div>
@@ -31,18 +33,19 @@
             <li class="nav-item"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#newLocation">New Location</button></li>
             <li class="nav-item"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteDepartment">Delete Department</button></li>
             <li class="nav-item"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteLocation">Delete Location</button></li>
-        </div>
+            <li class="nav-item"><button type="button" class="btn btn-primary refreshBtn">Refresh</button></li>
+            </div>
         </ul>
     </nav>
     <table class="table employeeTable">
-        <thead></thead>
+        <thead class='directoryHead'>
             <tr>
                 <th scope="col" class='directoryHeading'>Name</th>
-                <th class='directoryHeading'>Email</th>
-                <th class='directoryHeading'>Job Title</th>
-                <th class='directoryHeading'>Department</th>
-                <th class='directoryHeading'>Location</th>
-                <th></th>
+                <th scope="col" class='directoryHeading'>Email</th>
+                <th scope="col" class='directoryHeading'>Job Title</th>
+                <th scope="col" class='directoryHeading'>Department</th>
+                <th scope="col" class='directoryHeading'>Location</th>
+                <th scope="col" ></th>
             </tr>
         </thead>
         <tbody id="employees">
@@ -51,7 +54,7 @@
 
 <!--New Employee Modal-->
 <div class="modal fade" id="newEmployee" tabindex="-1" role="dialog" aria-labelledby="newEmployeeLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title newEmployeeTitle">New Employee</h5>
@@ -97,7 +100,7 @@
 
 <!--Edit Employee Modal-->
 <div class="modal fade" id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="editEmployeeLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title newEmployeeTitle">Edit Employee</h5>
@@ -143,7 +146,7 @@
 
 <!--View Employee Modal-->
 <div class="modal fade" id="viewEmployee" tabindex="-1" role="dialog" aria-labelledby="viewEmployeeLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
                 <h5 class="modal-title" id="viewEmployeeName"></h5>
@@ -186,7 +189,7 @@
 
 <!--New Department Modal-->
 <div class="modal fade" id="newDepartment" tabindex="-1" role="dialog" aria-labelledby="newDepartmentModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">New Department</h5>
@@ -218,7 +221,7 @@
 
 <!--New Location Modal-->
 <div class="modal fade" id="newLocation" tabindex="-1" role="dialog" aria-labelledby="newLocationModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="newLocationHeaderLabel">New Location</h5>
@@ -246,7 +249,7 @@
 
 <!--Delete Department Modal-->
 <div class="modal fade" id="deleteDepartment" tabindex="-1" role="dialog" aria-labelledby="deleteDepartmentModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Delete a Department</h5>
@@ -274,7 +277,7 @@
 
 <!--Confirm delete department Modal-->
 <div id="deleteDepartmentConfirm" class="modal fade">
-	<div class="modal-dialog modal-confirm">
+	<div class="modal-dialog modal-confirm modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header flex-column">
                 <button type="button" class="close" data-dismiss="modal" aria-label="closeBtn">
@@ -295,7 +298,7 @@
 
 <!--Please select a department modal-->
 <div id="selectDepartmentConfirm" class="modal fade">
-	<div class="modal-dialog modal-confirm">
+	<div class="modal-dialog modal-confirm modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header flex-column">
                 <button type="button" class="close" data-dismiss="modal" aria-label="closeBtn">
@@ -315,7 +318,7 @@
 
 <!--Cannot delete department modal-->
 <div id="cannotDeleteDepartment" class="modal fade">
-	<div class="modal-dialog modal-confirm">
+	<div class="modal-dialog modal-confirm modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header flex-column">
                 <button type="button" class="close" data-dismiss="modal" aria-label="closeBtn">
@@ -335,7 +338,7 @@
 
 <!--Delete Location Modal-->
 <div class="modal fade" id="deleteLocation" tabindex="-1" role="dialog" aria-labelledby="deleteLocationModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Delete a Location</h5>
@@ -363,7 +366,7 @@
 
 <!--Confirm delete Location Modal-->
 <div id="deleteLocationConfirm" class="modal fade">
-	<div class="modal-dialog modal-confirm">
+	<div class="modal-dialog modal-confirm modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header flex-column">
                 <button type="button" class="close" data-dismiss="modal" aria-label="closeBtn">
@@ -384,7 +387,7 @@
 
 <!--Please select a location modal-->
 <div id="selectLocationConfirm" class="modal fade">
-	<div class="modal-dialog modal-confirm">
+	<div class="modal-dialog modal-confirm modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header flex-column">
                 <button type="button" class="close" data-dismiss="modal" aria-label="closeBtn">
@@ -404,7 +407,7 @@
 
 <!--Cannot delete location modal-->
 <div id="cannotDeleteLocation" class="modal fade">
-	<div class="modal-dialog modal-confirm">
+	<div class="modal-dialog modal-confirm modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header flex-column">
                 <button type="button" class="close" data-dismiss="modal" aria-label="closeBtn">
@@ -424,7 +427,7 @@
 
 <!--Delete Employee Modal-->
 <div id="deleteModal" class="modal fade">
-	<div class="modal-dialog modal-confirm">
+	<div class="modal-dialog modal-confirm modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header flex-column">
                 <button type="button" class="close" data-dismiss="modal" aria-label="closeBtn">

@@ -4,6 +4,19 @@ var deleteDepartmentName;
 
 var selectedId;
 
+// window pre-loader
+$(window).on('load', function () {
+    if ($('#preloader').length) {
+        $('#preloader').delay(500).fadeOut('slow', function() {
+            $(this).remove();
+        });
+    }
+}); 
+
+$('.refreshBtn').on('click', function() {
+    document.location.reload(true);
+});
+
 function getEmployees() {
 
     $.ajax({
@@ -85,6 +98,8 @@ $('#editEmployeeButton').on('click', function() {
                         text: `${result['data']['department'][i]['name']}`
                     }));
                 };
+
+                console.log(result['data']);
 
                 document.getElementById("editFirstName").defaultValue = result['data']['personnel'][0]['firstName'];
                 document.getElementById("editLastName").defaultValue = result['data']['personnel'][0]['lastName'];
