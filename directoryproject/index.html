@@ -33,7 +33,7 @@
             <li class="nav-item"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#newLocation">New Location</button></li>
             <li class="nav-item"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteDepartment">Delete Department</button></li>
             <li class="nav-item"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteLocation">Delete Location</button></li>
-            <li class="nav-item"><button type="button" class="btn btn-primary refreshBtn">Refresh</button></li>
+            <li class="nav-item"><button type="button" class="btn btn-primary refreshBtn"><i class="fas fa-sync-alt"></i></button></li>
             </div>
         </ul>
     </nav>
@@ -99,7 +99,7 @@
 </div>
 
 <!--Edit Employee Modal-->
-<div class="modal fade" id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="editEmployeeLabel" aria-hidden="true">
+<div class="modal fade" id="editEmployee" role="dialog" aria-labelledby="editEmployeeLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
@@ -179,8 +179,8 @@
             </table>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-dismiss="modal" data-target="#deleteModal"><i class="far fa-trash-alt"></i></button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" id="editEmployeeButton" data-target="#editEmployee"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="far fa-trash-alt"></i></button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" id="editEmployeeButton" data-target="#editEmployee"><i class="fas fa-edit"></i></button>
             <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
         </div>
         </div>
@@ -268,7 +268,7 @@
             </div>
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger"  data-dismiss="modal" data-toggle="modal" id="confirmDeleteDepartment">Delete Department</button>
+                <button type="button" class="btn btn-danger"  data-toggle="modal" id="confirmDeleteDepartment">Delete Department</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -357,7 +357,7 @@
             </div>
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger"  data-dismiss="modal" data-toggle="modal" id="confirmDeleteLocation">Delete Location</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" id="confirmDeleteLocation">Delete Location</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
